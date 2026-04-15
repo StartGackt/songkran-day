@@ -87,33 +87,33 @@
         }
 
         .badge {
-            background: var(--glass);
+            background: rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255,255,255,0.3);
+            border: 1px solid rgba(186, 230, 253, 0.3);
             padding: 0.6rem 2rem;
             border-radius: 100px;
             font-size: 0.85rem;
             letter-spacing: 3px;
             display: inline-block;
             margin-bottom: 2rem;
-            color: var(--p-warm-gold);
+            color: #ffffff;
             text-transform: uppercase;
         }
 
         .main-title {
             font-family: 'Mitr', sans-serif;
-            font-size: clamp(2.5rem, 10vw, 6rem);
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
             font-weight: 600;
             line-height: 1.2;
             background: linear-gradient(to bottom, #fff 40%, var(--p-soft-blue) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             filter: drop-shadow(0 0 40px rgba(56,189,248,0.4));
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
         }
 
         .subtitle {
-            font-size: clamp(1.1rem, 3.5vw, 1.8rem);
+            font-size: clamp(1.1rem, 3.5vw, 1.4rem);
             color: rgba(255,255,255,0.9);
             font-weight: 300;
             max-width: 600px;
@@ -123,21 +123,21 @@
         /* --- AI Heart-Warming Card --- */
         .card {
             width: 100%;
-            max-width: 650px;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(30px);
+            max-width: 680px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(40px) saturate(150%);
             border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 40px;
             padding: 3rem 2.5rem;
-            margin: 3rem 0;
+            margin: 2rem 0;
             text-align: center;
-            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
             position: relative;
             overflow: hidden;
         }
 
         .blessing-text {
-            font-size: 1.35rem;
+            font-size: 1.25rem;
             line-height: 1.8;
             margin-bottom: 2.5rem;
             min-height: 140px;
@@ -160,15 +160,15 @@
 
         .ai-input {
             width: 100%;
-            padding: 1rem 1.5rem;
+            padding: 1.2rem 1.5rem;
             border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(0, 0, 0, 0.25);
             color: white;
             font-family: 'Anuphan', sans-serif;
-            font-size: 1rem;
+            font-size: 1.1rem;
             outline: none;
-            transition: border-color 0.3s;
+            transition: all 0.3s ease;
         }
 
         .ai-input:focus {
@@ -176,7 +176,7 @@
         }
 
         .ai-input::placeholder {
-            color: rgba(255, 255, 255, 0.4);
+            color: rgba(255, 255, 255, 0.6);
         }
 
         .btn-group {
@@ -187,10 +187,10 @@
         }
 
         .btn {
-            padding: 1rem 2rem;
+            padding: 0.9rem 2.2rem;
             border-radius: 100px;
             font-family: 'Mitr', sans-serif;
-            font-size: 1rem;
+            font-size: 1.05rem;
             cursor: pointer;
             border: none;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -310,33 +310,50 @@
 
         <footer>
             ขอเป็นกำลังใจเล็กๆ ให้คุณในทุกย่างก้าว <br>
-            สวัสดีปีใหม่ไทย ๒๕๖๘ — จากหัวใจ ❤️
+            สวัสดีปีใหม่ไทย ๒๕๖๙ — จากหัวใจ ❤️
         </footer>
     </div>
 
+    <script type="module">
+        window.__ENV__ = {
+            VITE_OPENROUTER_API_KEY: import.meta.env.VITE_OPENROUTER_API_KEY,
+            VITE_OPENROUTER_MODEL: import.meta.env.VITE_OPENROUTER_MODEL
+        };
+    </script>
     <script>
-        // --- Gemini API Setup ---
-        const apiKey = ""; // API key is handled by the environment
-        const modelName = "gemini-2.5-flash-preview-09-2025";
-
-        async function callGemini(prompt, retries = 5) {
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
+        // --- OpenRouter API Setup ---
+        async function callOpenRouter(prompt, retries = 5) {
+            const apiKey = window.__ENV__?.VITE_OPENROUTER_API_KEY || "";
+            const modelName = window.__ENV__?.VITE_OPENROUTER_MODEL || "google/gemini-2.5-flash";
+            const url = `https://openrouter.ai/api/v1/chat/completions`;
             const payload = {
-                contents: [{ parts: [{ text: prompt }] }],
-                systemInstruction: {
-                    parts: [{ text: "คุณคือผู้เชี่ยวชาญด้านการให้กำลังใจและนักภาษาศาสตร์ไทยที่เก่งกาจ หน้าที่ของคุณคือสร้างคำอวยพรวันสงกรานต์ (ปีใหม่ไทย) ที่ลึกซึ้ง ซึ้งใจ อบอุ่น และเต็มไปด้วยพลังบวกตามหัวข้อที่ผู้ใช้ระบุ หากผู้ใช้ระบุคนสำคัญ ให้สร้างคำอวยพรที่แสดงถึงความกตัญญูและความรัก หากระบุถึงตัวเอง ให้เน้นการเยียวยาใจและการเริ่มต้นใหม่ ใช้ภาษาที่ไพเราะ สละสลวย และมีอีโมจิประกอบให้น่ารัก ความยาวประมาณ 2-3 ประโยค" }]
-                }
+                model: modelName,
+                messages: [
+                    {
+                        role: "system",
+                        content: "คุณคือกวีและนักปราชญ์ผู้เชี่ยวชาญด้านการให้กำลังใจ หน้าที่ของคุณคือมอบพรวันสงกรานต์ที่ลึกซึ้ง ภาษาไพเราะสละสลวย งดงามเหมือนบทกวีร้อยแก้ว มีความเป็นมนุษย์และอบอุ่นอย่างแท้จริง\n\nข้อห้ามเด็ดขาด:\n- ห้ามใช้คำเกริ่นแบบ AI เช่น 'นี่คือคำอวยพร...', 'แน่นอนครับ', 'สุขสันต์วันสงกรานต์ครับ'\n- ห้ามส่งมาเป็นลิสต์หรือ bullet points\n- ให้ตอบเพียงถ้อยคำอวยพรล้วนๆ ราวกับส่งตรงจากหัวใจ ความยาวประมาณ 2-4 ประโยค พร้อมเติมอีโมจิที่เข้ากับความหมายให้พอดี"
+                    },
+                    {
+                        role: "user",
+                        content: `โปรดแต่งคำอวยพรสงกรานต์ที่ลึกซึ้งและอบอุ่นที่สุด ฝากความปรารถนาดีให้กับ: ${prompt}`
+                    }
+                ]
             };
 
             for (let i = 0; i < retries; i++) {
                 try {
                     const response = await fetch(url, {
                         method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
+                        headers: { 
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${apiKey}`,
+                            'HTTP-Referer': window.location.href,
+                            'X-Title': 'Songkran Blessing App'
+                        },
                         body: JSON.stringify(payload)
                     });
                     const result = await response.json();
-                    return result.candidates?.[0]?.content?.parts?.[0]?.text;
+                    return result.choices?.[0]?.message?.content;
                 } catch (error) {
                     if (i === retries - 1) throw error;
                     await new Promise(resolve => setTimeout(resolve, Math.pow(2, i) * 1000));
@@ -353,11 +370,10 @@
             spawnSplash(e);
             const target = targetInput.value.trim() || "ตัวเราเองและทุกคนที่รัก";
             aiBtn.disabled = true;
-            display.innerHTML = `<span class="loading-dots">AI กำลังกลั่นกรองคำอวยพรที่อบอุ่นที่สุดเพื่อ ${target}</span>`;
+            display.innerHTML = `<span class="loading-dots">พลังวิเศษกำลังกลั่นกรองคำอวยพรเพื่อ ${target}</span>`;
             
             try {
-                const prompt = `เขียนคำอวยพรสงกรานต์ 2568 ที่ซึ้งใจและอบอุ่นสำหรับ: ${target}`;
-                const aiResponse = await callGemini(prompt);
+                const aiResponse = await callOpenRouter(target);
                 
                 display.style.opacity = 0;
                 setTimeout(() => {
@@ -366,6 +382,7 @@
                     createWaterSplash(e.clientX || window.innerWidth/2, e.clientY || window.innerHeight/2, 3);
                 }, 300);
             } catch (err) {
+                console.error(err);
                 display.innerText = "ดูเหมือนสายน้ำจะขัดข้องชั่วคราว ลองกดรับพรใหม่อีกครั้งนะนะครับ 💛";
             } finally {
                 aiBtn.disabled = false;
