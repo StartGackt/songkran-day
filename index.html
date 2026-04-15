@@ -25,14 +25,14 @@
 
         body {
             font-family: 'Anuphan', sans-serif;
-            background: #082f49; 
-            color: white;
+            background: #bae6fd; 
+            color: #0f172a;
             min-height: 100vh;
             overflow-x: hidden;
             cursor: crosshair;
         }
 
-        /* --- Songkran Mesh Background --- */
+        /* --- Sunny Songkran Mesh Background --- */
         .bg-mesh {
             position: fixed;
             top: 0;
@@ -41,11 +41,11 @@
             height: 100%;
             z-index: -1;
             background: 
-                radial-gradient(at 0% 0%, hsla(190, 100%, 60%, 0.45) 0, transparent 50%),
-                radial-gradient(at 100% 0%, hsla(330, 100%, 65%, 0.4) 0, transparent 50%),
-                radial-gradient(at 100% 100%, hsla(270, 100%, 65%, 0.3) 0, transparent 50%),
-                radial-gradient(at 0% 100%, hsla(45, 100%, 60%, 0.25) 0, transparent 50%);
-            background-color: #0c4a6e;
+                radial-gradient(at 0% 0%, hsla(190, 100%, 85%, 0.8) 0, transparent 50%),
+                radial-gradient(at 100% 0%, hsla(50, 100%, 85%, 0.8) 0, transparent 50%),
+                radial-gradient(at 100% 100%, hsla(200, 100%, 80%, 0.8) 0, transparent 50%),
+                radial-gradient(at 0% 100%, hsla(330, 100%, 85%, 0.5) 0, transparent 50%);
+            background-color: #e0f2fe;
             animation: meshMove 15s ease-in-out infinite alternate;
         }
 
@@ -87,51 +87,53 @@
         }
 
         .badge {
-            background: rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(186, 230, 253, 0.3);
-            padding: 0.6rem 2rem;
+            background: #a855f7;
+            border: none;
+            padding: 0.6rem 2.5rem;
             border-radius: 100px;
-            font-size: 0.85rem;
-            letter-spacing: 3px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 2px;
             display: inline-block;
             margin-bottom: 2rem;
             color: #ffffff;
             text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
         }
 
         .main-title {
             font-family: 'Mitr', sans-serif;
             font-size: clamp(2.5rem, 8vw, 4.5rem);
-            font-weight: 600;
+            font-weight: 700;
             line-height: 1.2;
-            background: linear-gradient(to bottom, #fff 40%, var(--p-soft-blue) 100%);
+            background: linear-gradient(to bottom, #fde047 10%, #f97316 60%, #ef4444 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 40px rgba(56,189,248,0.4));
+            filter: drop-shadow(0 4px 0px #b91c1c) drop-shadow(0 10px 15px rgba(0,0,0,0.15));
             margin-bottom: 1.2rem;
+            letter-spacing: 2px;
         }
 
         .subtitle {
             font-size: clamp(1.1rem, 3.5vw, 1.4rem);
-            color: rgba(255,255,255,0.9);
-            font-weight: 300;
+            color: #1e3a8a;
+            font-weight: 500;
             max-width: 600px;
             line-height: 1.6;
         }
 
-        /* --- AI Heart-Warming Card --- */
+        /* --- Bright Daytime Card --- */
         .card {
             width: 100%;
             max-width: 680px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(40px) saturate(150%);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(20px) saturate(150%);
+            border: 2px solid rgba(255, 255, 255, 0.8);
             border-radius: 40px;
             padding: 3rem 2.5rem;
             margin: 2rem 0;
             text-align: center;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(14, 165, 233, 0.25), inset 0 0 20px rgba(255, 255, 255, 0.5);
             position: relative;
             overflow: hidden;
         }
@@ -144,9 +146,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #fff9f0;
-            font-weight: 300;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            color: #1e3a8a;
+            font-weight: 500;
             transition: all 0.5s ease;
         }
 
@@ -162,21 +163,26 @@
             width: 100%;
             padding: 1.2rem 1.5rem;
             border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            background: rgba(0, 0, 0, 0.25);
-            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.7);
+            color: #0f172a;
             font-family: 'Anuphan', sans-serif;
             font-size: 1.1rem;
+            font-weight: 500;
             outline: none;
             transition: all 0.3s ease;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
         }
 
         .ai-input:focus {
             border-color: #38bdf8;
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.2);
         }
 
         .ai-input::placeholder {
-            color: rgba(255, 255, 255, 0.6);
+            color: #64748b;
+            font-weight: 400;
         }
 
         .btn-group {
@@ -200,17 +206,19 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--p-soft-blue), #38bdf8);
-            color: #082f49;
-            box-shadow: 0 10px 20px -5px rgba(56, 189, 248, 0.4);
+            background: linear-gradient(135deg, #a855f7, #7e22ce);
+            color: #ffffff;
+            box-shadow: 0 10px 20px -5px rgba(168, 85, 247, 0.4);
             font-weight: 600;
+            border: 2px solid rgba(255, 255, 255, 0.2);
         }
 
         .btn-ai {
-            background: linear-gradient(135deg, #fef3c7, #fde68a);
-            color: #78350f;
-            box-shadow: 0 10px 20px -5px rgba(251, 191, 36, 0.4);
+            background: linear-gradient(135deg, #fde047, #f97316);
+            color: #ffffff;
+            box-shadow: 0 10px 20px -5px rgba(249, 115, 22, 0.4);
             font-weight: 600;
+            border: 2px solid #fed7aa;
         }
 
         .btn-secondary {
@@ -258,10 +266,10 @@
         footer {
             margin-top: auto;
             padding: 3rem;
-            font-size: 0.9rem;
-            opacity: 0.8;
+            font-size: 0.95rem;
+            font-weight: 500;
             text-align: center;
-            color: #bae6fd;
+            color: #0ea5e9;
         }
 
         @media (max-width: 480px) {

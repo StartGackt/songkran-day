@@ -1,0 +1,2 @@
+VITE_OPENROUTER_API_KEY="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"
+VITE_OPENROUTER_MODEL="google/gemini-2.5-flash"
