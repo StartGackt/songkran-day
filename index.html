@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เติมพลังใจ สงกรานต์ 2568 🌸✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;600&family=Anuphan:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --p-warm-gold: #fef3c7;
+            --p-peach: #fbcfb1;
+            --p-rose: #fda4af;
+            --p-amber: #f59e0b;
+            --p-soft-blue: #e0f2fe;
+            --glass: rgba(255, 255, 255, 0.2);
+            --glass-heavy: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Anuphan', sans-serif;
+            background: #451a03; 
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+            cursor: crosshair;
+        }
+
+        /* --- Warm Mesh Background --- */
+        .bg-mesh {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(at 0% 0%, hsla(32,100%,70%,0.4) 0, transparent 50%),
+                radial-gradient(at 100% 0%, hsla(10,100%,80%,0.4) 0, transparent 50%),
+                radial-gradient(at 100% 100%, hsla(330,100%,70%,0.3) 0, transparent 50%),
+                radial-gradient(at 0% 100%, hsla(45,100%,60%,0.3) 0, transparent 50%);
+            background-color: #78350f;
+            animation: meshMove 15s ease-in-out infinite alternate;
+        }
+
+        @keyframes meshMove {
+            0% { transform: scale(1) rotate(0deg); }
+            100% { transform: scale(1.1) rotate(2deg); }
+        }
+
+        #waterCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .wrapper {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 3rem 1rem;
+            min-height: 100vh;
+        }
+
+        .hero {
+            text-align: center;
+            margin-top: 5vh;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .badge {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 0.6rem 2rem;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--p-warm-gold);
+            text-transform: uppercase;
+        }
+
+        .main-title {
+            font-family: 'Mitr', sans-serif;
+            font-size: clamp(2.5rem, 10vw, 6rem);
+            font-weight: 600;
+            line-height: 1.2;
+            background: linear-gradient(to bottom, #fff 40%, var(--p-peach) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 40px rgba(251,146,60,0.3));
+            margin-bottom: 1.5rem;
+        }
+
+        .subtitle {
+            font-size: clamp(1.1rem, 3.5vw, 1.8rem);
+            color: rgba(255,255,255,0.9);
+            font-weight: 300;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        /* --- AI Heart-Warming Card --- */
+        .card {
+            width: 100%;
+            max-width: 650px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 40px;
+            padding: 3rem 2.5rem;
+            margin: 3rem 0;
+            text-align: center;
+            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blessing-text {
+            font-size: 1.35rem;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            min-height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff9f0;
+            font-weight: 300;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.5s ease;
+        }
+
+        .ai-input-container {
+            margin-bottom: 2rem;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .ai-input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.2);
+            color: white;
+            font-family: 'Anuphan', sans-serif;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .ai-input:focus {
+            border-color: var(--p-peach);
+        }
+
+        .ai-input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 100px;
+            font-family: 'Mitr', sans-serif;
+            font-size: 1rem;
+            cursor: pointer;
+            border: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--p-peach), var(--p-rose));
+            color: #451a03;
+            box-shadow: 0 10px 20px -5px rgba(244, 114, 182, 0.4);
+            font-weight: 600;
+        }
+
+        .btn-ai {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            color: #78350f;
+            box-shadow: 0 10px 20px -5px rgba(251, 191, 36, 0.4);
+            font-weight: 600;
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.03);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .petal-float {
+            position: fixed;
+            pointer-events: none;
+            z-index: 5;
+            animation: floatSway var(--d) ease-in-out infinite;
+        }
+
+        @keyframes floatSway {
+            0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translate(var(--x), -110vh) rotate(720deg); opacity: 0; }
+        }
+
+        .loading-dots::after {
+            content: '.';
+            animation: dots 1.5s steps(5, end) infinite;
+        }
+
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60% { content: '...'; }
+            80%, 100% { content: ''; }
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 3rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            text-align: center;
+            color: var(--p-warm-gold);
+        }
+
+        @media (max-width: 480px) {
+            .card { padding: 2rem 1.5rem; }
+            .btn { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-mesh"></div>
+    <canvas id="waterCanvas"></canvas>
+
+    <div class="wrapper">
+        <div class="hero">
+            <div class="badge">🌤️ สงกรานต์แห่งการเริ่มต้นใหม่ 2568</div>
+            <h1 class="main-title">โอบกอดใจ<br>ในวันสงกรานต์</h1>
+            <p class="subtitle">ให้พลังของ Dev Oat ช่วยรังสรรค์คำอวยพรที่อบอุ่นที่สุดเพื่อคุณและคนที่คุณรักในวันปีใหม่ไทยนี้</p>
+        </div>
+
+        <div class="card">
+            <div class="ai-input-container">
+                <input type="text" id="targetInput" class="ai-input" placeholder="ระบุคนที่คุณอยากอวยพร (เช่น พ่อแม่, เพื่อน, ตัวเอง)...">
+            </div>
+
+            <div id="blessingDisplay" class="blessing-text">
+                พิมพ์ชื่อคนสำคัญ หรือสิ่งที่คุณอยากขอพร <br>
+                แล้วกดรับพลังพิเศษจาก Dev Oat AI ด้านล่างได้เลยครับ 💛
+            </div>
+            
+            <div class="btn-group">
+                <button id="aiBtn" class="btn btn-ai" onclick="generateAIBlessing(event)">
+                    ✨ รับพรพิเศษจาก Dev Oat
+                </button>
+                <button class="btn btn-primary" onclick="generateNormalBlessing(event)">
+                    🌸 สุ่มคำอวยพรดั้งเดิม
+                </button>
+                <button class="btn btn-secondary" onclick="spawnSplash(event)">
+                    💦 ประพรมน้ำปรุง
+                </button>
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 1.5rem; opacity: 0.9; font-weight: 300;">
+            <span>✨ ปรารถนาดีจาก Dev Oat</span>
+            <span>🌸 ฮีลใจให้ชุ่มฉ่ำ</span>
+            <span>🌈 พลังบวก 24 ชม.</span>
+        </div>
+
+        <footer>
+            ขอเป็นกำลังใจเล็กๆ ให้คุณในทุกย่างก้าว <br>
+            สวัสดีปีใหม่ไทย ๒๕๖๘ — จากหัวใจ ❤️
+        </footer>
+    </div>
+
+    <script>
+        // --- Gemini API Setup ---
+        const apiKey = ""; // API key is handled by the environment
+        const modelName = "gemini-2.5-flash-preview-09-2025";
+
+        async function callGemini(prompt, retries = 5) {
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
+            const payload = {
+                contents: [{ parts: [{ text: prompt }] }],
+                systemInstruction: {
+                    parts: [{ text: "คุณคือผู้เชี่ยวชาญด้านการให้กำลังใจและนักภาษาศาสตร์ไทยที่เก่งกาจ หน้าที่ของคุณคือสร้างคำอวยพรวันสงกรานต์ (ปีใหม่ไทย) ที่ลึกซึ้ง ซึ้งใจ อบอุ่น และเต็มไปด้วยพลังบวกตามหัวข้อที่ผู้ใช้ระบุ หากผู้ใช้ระบุคนสำคัญ ให้สร้างคำอวยพรที่แสดงถึงความกตัญญูและความรัก หากระบุถึงตัวเอง ให้เน้นการเยียวยาใจและการเริ่มต้นใหม่ ใช้ภาษาที่ไพเราะ สละสลวย และมีอีโมจิประกอบให้น่ารัก ความยาวประมาณ 2-3 ประโยค" }]
+                }
+            };
+
+            for (let i = 0; i < retries; i++) {
+                try {
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await response.json();
+                    return result.candidates?.[0]?.content?.parts?.[0]?.text;
+                } catch (error) {
+                    if (i === retries - 1) throw error;
+                    await new Promise(resolve => setTimeout(resolve, Math.pow(2, i) * 1000));
+                }
+            }
+        }
+
+        // --- Core Logic ---
+        const display = document.getElementById('blessingDisplay');
+        const aiBtn = document.getElementById('aiBtn');
+        const targetInput = document.getElementById('targetInput');
+
+        async function generateAIBlessing(e) {
+            spawnSplash(e);
+            const target = targetInput.value.trim() || "ตัวเราเองและทุกคนที่รัก";
+            aiBtn.disabled = true;
+            display.innerHTML = `<span class="loading-dots">AI กำลังกลั่นกรองคำอวยพรที่อบอุ่นที่สุดเพื่อ ${target}</span>`;
+            
+            try {
+                const prompt = `เขียนคำอวยพรสงกรานต์ 2568 ที่ซึ้งใจและอบอุ่นสำหรับ: ${target}`;
+                const aiResponse = await callGemini(prompt);
+                
+                display.style.opacity = 0;
+                setTimeout(() => {
+                    display.innerText = aiResponse || "ขอให้ปีใหม่ไทยนี้เต็มไปด้วยรอยยิ้มและความสุขนะครับ 💛";
+                    display.style.opacity = 1;
+                    createWaterSplash(e.clientX || window.innerWidth/2, e.clientY || window.innerHeight/2, 3);
+                }, 300);
+            } catch (err) {
+                display.innerText = "ดูเหมือนสายน้ำจะขัดข้องชั่วคราว ลองกดรับพรใหม่อีกครั้งนะนะครับ 💛";
+            } finally {
+                aiBtn.disabled = false;
+            }
+        }
+
+        const normalBlessings = [
+            "ปีที่ผ่านมาคุณเหนื่อยมามากแล้วนะ สงกรานต์นี้ขอให้ใจได้พักผ่อนอย่างเต็มที่ครับ 🌿",
+            "ขอให้สายน้ำเย็นๆ ช่วยชะล้างความกังวลทิ้งไป แล้วรับเอาความสดใสกลับคืนมานะ 💛",
+            "คุณคือคนเก่งที่สุดเสมอ... ขอให้ปีไทยปีนี้มีแต่เรื่องที่ทำให้คุณยิ้มได้กว้างๆ นะครับ ✨",
+            "ไม่ว่าจะเกิดอะไรขึ้น ขอให้คุณโอบกอดตัวเองด้วยความรักเหมือนที่สายน้ำโอบกอดเรานะ 🌸",
+            "ขอให้ทุกเช้าที่คุณลืมตา เป็นวันที่เต็มไปด้วยกำลังใจและความอบอุ่นในใจ 🌤️"
+        ];
+
+        function generateNormalBlessing(e) {
+            spawnSplash(e);
+            const randomBlessing = normalBlessings[Math.floor(Math.random() * normalBlessings.length)];
+            display.style.opacity = 0;
+            setTimeout(() => {
+                display.innerText = randomBlessing;
+                display.style.opacity = 1;
+                createWaterSplash(e.clientX, e.clientY, 1.5);
+            }, 300);
+        }
+
+        // --- Visual Effects ---
+        const canvas = document.getElementById('waterCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        class WaterParticle {
+            constructor(x, y, vx, vy) {
+                this.x = x; this.y = y; this.vx = vx; this.vy = vy;
+                this.life = 1.0;
+                this.size = Math.random() * 5 + 3;
+                const colors = ['#fff9f0', '#fef3c7', '#e0f2fe', '#fbcfb1'];
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+            }
+            update() {
+                this.x += this.vx; this.y += this.vy;
+                this.vy += 0.15; this.life -= 0.015;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.globalAlpha = this.life;
+                ctx.fill();
+            }
+        }
+
+        function createWaterSplash(x, y, power = 1) {
+            for (let i = 0; i < 20 * power; i++) {
+                const angle = Math.random() * Math.PI * 2;
+                const speed = Math.random() * 6 + 2;
+                particles.push(new WaterParticle(x, y, Math.cos(angle) * speed, Math.sin(angle) * speed - 4));
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles = particles.filter(p => p.life > 0);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        function spawnSplash(e) {
+            const rect = e.target.getBoundingClientRect();
+            createWaterSplash(rect.left + rect.width/2, rect.top, 1.5);
+        }
+
+        const elements = ['🌸', '🌼', '🍃', '✨', '🤍'];
+        function createFloatingElement() {
+            const div = document.createElement('div');
+            div.className = 'petal-float';
+            div.innerText = elements[Math.floor(Math.random() * elements.length)];
+            div.style.left = Math.random() * 100 + 'vw';
+            div.style.bottom = '-60px';
+            div.style.setProperty('--x', (Math.random() - 0.5) * 300 + 'px');
+            div.style.setProperty('--d', (Math.random() * 6 + 7) + 's');
+            div.style.fontSize = (Math.random() * 15 + 15) + 'px';
+            div.style.opacity = 0.5;
+            document.body.appendChild(div);
+            setTimeout(() => div.remove(), 12000);
+        }
+        setInterval(createFloatingElement, 1500);
+
+        document.addEventListener('click', (e) => {
+            if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'INPUT') {
+                createWaterSplash(e.clientX, e.clientY, 0.8);
+            }
+        });
+    </script>
+</body>
+</html>
